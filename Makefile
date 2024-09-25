@@ -8,5 +8,5 @@ proto: $(PROTO_SOURCES)
 	-I ./proto \
 	--go_out=. --go_opt=paths=source_relative \
     --go-grpc_out=. --go-grpc_opt=paths=source_relative \
-    --include_imports --include_source_info --descriptor_set_out=supplier-api.pb \
+    --include_imports --include_source_info --descriptor_set_out=go-cmux.pb \
 	$(PROTO_SOURCES)

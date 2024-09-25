@@ -11,13 +11,16 @@ import (
 	pb "github.com/vmotta8/go-cmux/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+	"google.golang.org/protobuf/types/known/emptypb" // Import necessário
 )
 
-type grpcServer struct {
+// Renomeie a estrutura para evitar conflitos
+type grpcSrv struct {
 	pb.UnimplementedInfoServiceServer
 }
 
-func (s *grpcServer) GetInfoGrpc(ctx context.Context, in *pb.Empty) (*pb.InfoResponse, error) {
+// Atualize a assinatura para usar *emptypb.Empty
+func (s *grpcSrv) GetInfoGrpc(ctx context.Context, in *emptypb.Empty) (*pb.InfoResponse, error) {
 	return &pb.InfoResponse{Message: "Olá do gRPC!"}, nil
 }
 
@@ -37,7 +40,7 @@ func main() {
 
 	// Configura o servidor gRPC
 	grpcServer := grpc.NewServer()
-	pb.RegisterInfoServiceServer(grpcServer, &grpcServer{})
+	pb.RegisterInfoServiceServer(grpcServer, &grpcSrv{}) // Use a nova estrutura
 	// Registrar reflection para facilitar testes
 	reflection.Register(grpcServer)
 

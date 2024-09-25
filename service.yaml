@@ -1,0 +1,22 @@
+type: google.api.Service
+config_version: 3
+name: api.empresa.com
+title: Suppliers API
+
+apis:
+  - name: service.InfoService
+
+# Referência ao arquivo OpenAPI
+http:
+  rules:
+    - selector: "getInfoRest"
+      get: "/get-info-rest"
+
+endpoints:
+  - name: api.empresa.com
+    allow_cors: true
+
+backend:
+  rules:
+    - selector: "*"
+      address: grpcs://127.0.0.1:8080

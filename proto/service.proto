@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package service;
+option go_package = "github.com/yourusername/supplier-api/proto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+service InfoService {
+  rpc GetInfoGrpc (google.protobuf.Empty) returns (InfoResponse) {
+    option (google.api.http) = { get: "/get-info-grpc" };
+  }
+}
+
+message InfoResponse {
+  string message = 1;
+}

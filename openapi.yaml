@@ -1,0 +1,21 @@
+openapi: 3.0.0
+info:
+  title: Suppliers API
+  version: 1.0.0
+servers:
+  - url: https://api.empresa.com
+paths:
+  /get-info-rest:
+    get:
+      summary: Get Info REST
+      operationId: getInfoRest
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string

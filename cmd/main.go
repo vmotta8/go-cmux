@@ -25,10 +25,10 @@ func (s *grpcSrv) GetInfoGrpc(ctx context.Context, in *emptypb.Empty) (*pb.InfoR
 }
 
 func main() {
-	// Cria o listener principal na porta 8080
-	lis, err := net.Listen("tcp", ":8080")
+	// Cria o listener principal na porta 8081
+	lis, err := net.Listen("tcp", ":8081")
 	if err != nil {
-		log.Fatalf("Falha ao escutar na porta 8080: %v", err)
+		log.Fatalf("Falha ao escutar na porta 8081: %v", err)
 	}
 
 	// Cria um cmux a partir do listener
@@ -70,7 +70,7 @@ func main() {
 	}()
 
 	// Inicia o cmux para servir ambos os servidores
-	log.Println("Servidor escutando na porta 8080")
+	log.Println("Servidor escutando na porta 8081")
 	if err := m.Serve(); err != nil {
 		log.Fatalf("cmux falhou: %v", err)
 	}
